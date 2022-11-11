@@ -1,7 +1,7 @@
 repeat task.wait() until game.GameId ~= 0
 
 if Parvus and Parvus.Game then
-    Parvus.Util.UI:Notification({
+    Parvus.Utilities.UI:Notification({
         Title = "Parvus Hub - TWR ONLY",
         Description = "Script already running!",
         Duration = 5
@@ -42,15 +42,15 @@ local function LoadScript(Script)
     or game:HttpGetAsync(("%s%s.lua"):format(Parvus.Domain,Script)))()
 end
 
-getgenv().Parvus = {Debug = LoadArgs[1],Util = {},
+getgenv().Parvus = {Debug = LoadArgs[1],Utilities = {},
     Domain = "https://raw.githubusercontent.com/Genanv/Test/main/",Games = {
         ["187796008" ] = {Name = "Those Who Remain",          Script = "Games/TWR" }
     }
 }
 
-Parvus.Util.UI = LoadScript("Util/UI")
-Parvus.Util.Misc = LoadScript("Util/Misc")
-Parvus.Util.Drawing = LoadScript("Util/Drawing")
+Parvus.Utilities.UI = LoadScript("Utilities/UI")
+Parvus.Utilities.Misc = LoadScript("Utilities/Misc")
+Parvus.Utilities.Drawing = LoadScript("Utilities/Drawing")
 
 local SupportedGame = GetSupportedGame()
 LocalPlayer.OnTeleport:Connect(function(State)
@@ -65,7 +65,7 @@ end)
 if SupportedGame then
     Parvus.Game = SupportedGame.Name
     LoadScript(SupportedGame.Script)
-    Parvus.Util.UI:Notification({
+    Parvus.Utilities.UI:Notification({
         Title = "Parvus Hub - TWR ONLY",
         Description = Parvus.Game .. " loaded!",
         Duration = LoadArgs[2]
