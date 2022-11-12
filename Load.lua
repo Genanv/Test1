@@ -43,7 +43,7 @@ local function LoadScript(Script)
 end
 
 getgenv().Parvus = {Debug = LoadArgs[1],Utilities = {},
-    Domain = "https://raw.githubusercontent.com/Genanv/Test/main/",Games = {
+    Domain = "https://raw.githubusercontent.com/Genanv/Test1/main/",Games = {
         ["187796008" ] = {Name = "Those Who Remain",          Script = "Games/TWR" }
     }
 }
