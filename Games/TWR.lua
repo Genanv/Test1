@@ -90,7 +90,7 @@ local Window = Parvus.Utilities.UI:Window({
             TriggerSection:Keybind({Name = "Keybind",Flag = "Trigger/Keybind",Value = "MouseButton2",
             Mouse = true,Callback = function(Key,KeyDown)
                 Trigger = Window.Flags["Trigger/Enabled"] and KeyDown
-                if Window.Flags['Trigger/Enabled'] then
+                if Window.Flags['Trigger/Enabled'] == true then
                     mouse1press()
                 end
             end})
@@ -301,6 +301,7 @@ local function GetHitbox(Config)
                 local Magnitude = (Vector2.new(ScreenPosition.X, ScreenPosition.Y) - UserInputService:GetMouseLocation()).Magnitude
                 if OnScreen and Magnitude < FieldOfView then
                     FieldOfView,ClosestHitbox = Magnitude,{NPC,NPC,Hitbox,Distance,ScreenPosition}
+                    mouse1press()
                 end
             end
         end
