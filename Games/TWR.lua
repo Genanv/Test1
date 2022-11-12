@@ -13,6 +13,14 @@ local Ray = require(ReplicatedStorage.SharedModules.Utilities.Ray)
 local GuiModule = require(LocalPlayer.PlayerScripts.Client.Gui)
 local RemoteEvent = ReplicatedStorage:WaitForChild("RE")
 
+local vim = game:GetService('VirtualInputManager')
+
+local function m1click() 
+    vim:SendMouseButtonEvent(0,0,0,true,game,0)
+    wait()
+    vim:SendMouseButtonEvent(0,0,0,false,game,0)
+end
+
 local OCIFunction for Index,Function in pairs(getgc()) do
     if islclosure(Function) and getconstants(Function)[1] == "GetCC" then
         OCIFunction = Function
@@ -301,7 +309,7 @@ local function GetHitbox(Config)
                 local Magnitude = (Vector2.new(ScreenPosition.X, ScreenPosition.Y) - UserInputService:GetMouseLocation()).Magnitude
                 if OnScreen and Magnitude < FieldOfView then
                     FieldOfView,ClosestHitbox = Magnitude,{NPC,NPC,Hitbox,Distance,ScreenPosition}
-                    mouse1press()
+                    m1click()
                 end
             end
         end
